@@ -2,10 +2,10 @@
 CS221 Term Project: Delivery Service
 
 Done by the Programmers:
-	Shahad AlQarni - 2200005154
-	Zainab AlRamadan - 2210003510
-	Maeen AlHammadi - 2210003673
-	Norah AlSalhi - 2210003635
+	Shahad AlQarni
+	Zainab AlRamadhan
+	Maen AlHammadi
+	Norah AlSalhi
 
 This program offers delivery services for customers and employees
 */

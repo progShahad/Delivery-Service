@@ -262,7 +262,7 @@ void recieve(const string branches[], int size, bool is_employee){
 								ship[index].cost = ship[index].cost - (ship[index].cost * 0.10);
 							
 							cout << "Cost: " << ship[index].cost << " SR\n"
-								 << "\n - Choose payment way (1.cash\t 2.credit card)\n";
+								 << "\n - Choose payment method (1.cash\t 2.credit card)\n";
 							cin >> Payment;
 							
 							cout << "\n ** Thank you for using our service **\n";
@@ -327,7 +327,7 @@ void recieve(const string branches[], int size, bool is_employee){
 							
 							cout << "Cost: " << ship[index].cost << " SR\n";
 								
-							cout<<"\n - Choose payment way (1. cash 2. credit card)\n";
+							cout<<"\n - Choose payment method (1. cash 2. credit card)\n";
 							cin>>Payment;
 							
 							cout << "\n ** Thank you for using our service **\n";

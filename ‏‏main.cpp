@@ -146,17 +146,17 @@ bool login( Employee *emp, int size ){ //this function is for employee login
 	string id, password;
 	
 	//input
-	cout << "\n To login, enter:\n"
-		 << "- ID: ";
+	cout << "\n*********************************************************\n\t  To login, enter:\n"
+		 << "\t- ID: ";
 	cin >> id;
-	cout << "- Password: ";
+	cout << "\t- Password: ";
 	cin.ignore();
 	getline(cin, password);
 	
 	//check
 	for(int i=0 ; i<=size ; i++){
 		if(emp[i].id == id && emp[i].password == password){
-			cout << "\t Logged in successfully.. Welcome again " << emp[i].name << endl;
+			cout << "\n\tLogged in successfully.. Welcome again " << emp[i].name << endl;
 			return true;
 		}
 	}
@@ -178,21 +178,21 @@ void costFun(double distance, double &cost){ //this function determines cost acc
 void guess_game(int correct){
 	int guess, play;
 	
-	cout << "\n\tDo you want to play? enter 1 to play: ";
+	cout << "\n\tDo you want to play? Enter 1 to play: ";
 	cin >> play;
 	
 	while(play == 1){
-		cout << "\n\tGuess the branch of your shipment:\n"
+		cout << "\n\t Guess the branch of your shipment:\n"
 			 << "0. Dammam\t" << "1. Jubail\t" << "2. Riyadh\n" << "3. Jeddah\t" << "4. Hail\n"
 			 << "Enter a number: ";
 		cin >> guess;
 		
 		if(guess == correct){
-			cout << "\t Correct..You won!\n";
+			cout << "\n\t ****---- Correct..You won! ----****\n";
 			break; //break the while loop
 		}
 		else{
-			cout << "Wrong guess, enter 1 to try again, other number to exit the game: ";
+			cout << "\n\t xx Wrong guess xx  :( \n\n  Enter 1 to try again, other number to exit the game: ";
 			cin >> play;
 		}
 	} //end of while
@@ -236,11 +236,12 @@ void recieve(const string branches[], int size, bool is_employee){
 					cin >> How;
 					switch(How){
 						case 1: //from a branch
+							cout << "\t Processing....\n";
 							rand_branch = 0 + rand() % (size-1 -0+1);
 							guess_game(rand_branch);
 							
-							cout << "\nYour shipment is in " << branches[rand_branch] << endl
-								 << "-- All branches open from 9 AM to 11 PM \n";
+							cout << "\n** Your shipment is in " << branches[rand_branch]
+								 << " -- All branches open from 9 AM to 11 PM ** \n";
 							break;
 						case 2: //from your location
 							cout << "\n - Enter your location coordinates:\n";
@@ -299,11 +300,12 @@ void recieve(const string branches[], int size, bool is_employee){
 					cin>>How;
 					switch(How){
 						case 1: //branch
+							cout << "\t Processing....\n";
 							rand_branch = 0 + rand() % (size-1-0+1);
 							guess_game(rand_branch);
 							
-							cout<<"\nYour shipment is in " << branches[rand_branch] << endl
-								<<"-- All branches open from 9 AM to 11 PM \n";
+							cout<<"\n** Your shipment is in " << branches[rand_branch]
+								<<" -- All branches open from 9 AM to 11 PM ** \n";
 							break;
 						case 2: //your location
 							cout << "\n - Enter your corrdinates: \n";
@@ -488,6 +490,8 @@ void send(const string branches[], int size, bool is_employee){ //This function 
 			cout << "Invalid choice.. try again\n";
 			goto recieve_label;
 	} //end of switch
+	
+	sort(); //sort shipments after adding the new one
 	
 } //end of send function
 
@@ -745,14 +749,14 @@ int main(){
 	switch(choice){
 		case 1: //customer options
 			do{
-				cout << "\n*******************\n"
+				cout << "\n*********************************************************\n"
 					 << "Select a service:\n"
 		 			 << " 1. Send\n"
 			 		 << " 2. Track\n"
 			 		 << " 3. Recieve\n"
 					 << " 4. End\n";
 			 	service1_label:
-				cout << "- Enter: ";
+				cout << "\n- Enter: ";
 		 		cin >> service;
 		 	
 			 	switch(service){
@@ -781,7 +785,7 @@ int main(){
 			login_label:
 			if( login(emp, empIndex) ){ //this block will not be excuted unless the login is successfull
 				do{
-					cout << "\n*******************\n"
+					cout << "\n*********************************************************\n"
 						 << "Select a service:\n"
 			 			 << " 1. Send\n"
 			 			 << " 2. Track\n"
@@ -790,7 +794,7 @@ int main(){
 						 << " 5. View archive\n"
 						 << " 6. End\n";
 					service2_label:
-					cout << "- Enter: ";
+					cout << "\n- Enter: ";
 			 		cin >> service;
 			 		
 		 			switch(service){

@@ -40,10 +40,11 @@ struct Date{
 
 
 //Functions Definitions
+
 void view(){ //this function will print all the array (ship) elements
 	for(int i=0 ; i <= myIndex ; i++){
 		cout << "\n*************************\n"
-			 << "Shipment " << i+1 << ":\n"
+			 << "Shipment " << i+1 << ":\n\n"
 			 << "- Delivery number: " << ship[i].number << endl
 			 << "- Customer name: " << ship[i].customer_name << endl
 			 << "- Phone number: " << ship[i].phone << endl
@@ -178,7 +179,7 @@ void costFun(double distance, double &cost){ //this function determines cost acc
 void guess_game(int correct){
 	int guess, play;
 	
-	cout << "\n\tDo you want to play? Enter 1 to play: ";
+	cout << "\n\tWhile waiting.. Do you want to play? Enter 1 to play: ";
 	cin >> play;
 	
 	while(play == 1){
@@ -645,8 +646,11 @@ void archived(){ //this function reads the archived shipments and displays it
 		inFile.ignore();
 		inFile.get(status);
 		//reading done
-		
-		cout << "\n *** Archived Shipments ***\n\n";
+		cout << "\n --------------------------------------\n"
+			 << "|                                      |"
+			 << "\n|      *** Archived Shipments ***      |\n"
+			 << "|                                      |"
+			 << "\n --------------------------------------\n";
 		
 		while( !inFile.eof() ){
 			cout << "- Delivery number: " << delivery_number << endl;
@@ -655,7 +659,7 @@ void archived(){ //this function reads the archived shipments and displays it
 			cout << "- Customer name: " << name << endl;
 			cout << "- Cost: " << cost << endl;
 			cout << "- Status: " << status << endl;
-			cout << endl;
+			cout << "\n --------------------------------------\n";
 			
 			inFile.ignore();
 			getline(inFile, delivery_number, '\t');
@@ -738,12 +742,13 @@ int main(){
 	
 	//output beginning
 	cout << "  ----- Welcome to Delivery Service -----\n"
-		 << "\n** Enter the number of option when you choose **\n"
-		 << "\nAre you:\n"
-		 << " 1. Customer\n"
-		 << " 2. Employee\n";
+		 << "\n** Enter the number of option when you choose **\n";
+	cout << "\n---------------------------------";
 	begin_label:
-		cout << "- Enter: ";
+	cout << "\n\t  Are you:\n"
+		 << " \t1. Customer\n"
+		 << " \t2. Employee\n"
+		 << "\t- Enter: ";
 	cin >> choice;
 	
 	switch(choice){
@@ -754,7 +759,8 @@ int main(){
 		 			 << " 1. Send\n"
 			 		 << " 2. Track\n"
 			 		 << " 3. Recieve\n"
-					 << " 4. End\n";
+			 		 << " 4. Back to the beginning\n"
+					 << " 5. End\n";
 			 	service1_label:
 				cout << "\n- Enter: ";
 		 		cin >> service;
@@ -770,13 +776,17 @@ int main(){
 		 				recieve(branches, noBranches, false);
 		 				break;
 		 			case 4:
+		 				cout << "\n---------------------------------";
+		 				goto begin_label;
+		 				break;
+		 			case 5:
 		 				break;
 			 		default:
 			 			cout << "Wrong choice of service\n\n";
 		 				goto service1_label;
 				 } //end of inner switch 1
 			}
-			while (service != 4);
+			while (service != 5);
 			
 			break;
 		
@@ -792,7 +802,8 @@ int main(){
 			 			 << " 3. Recieve\n"
 						 << " 4. View all shipments\n" //the additional service for employee
 						 << " 5. View archive\n"
-						 << " 6. End\n";
+						 << " 6. Back to the beginning (log out)\n"
+						 << " 7. End\n";
 					service2_label:
 					cout << "\n- Enter: ";
 			 		cin >> service;
@@ -814,13 +825,17 @@ int main(){
 		 					archived();
 		 					break;
 		 				case 6:
+		 					cout << "\n---------------------------------";
+		 					goto begin_label;
+		 					break;
+		 				case 7:
 		 					break;
 		 				default:
 		 					cout << "Wrong choice of service\n\n";
 		 					goto service2_label;
 			 		} //end of inner switch 2
 				}
-				while(service != 6);
+				while(service != 7);
 			} //end if
 			else{
 				cout << "Wrong name/password.. Please try again\n";
@@ -830,7 +845,7 @@ int main(){
 			break;
 			
 			default:
-				cout << "Wrong choice.. Try again\n\n";
+				cout << "  Wrong choice.. Try again\n";
 				goto begin_label;
 	} //end of outer switch
 	

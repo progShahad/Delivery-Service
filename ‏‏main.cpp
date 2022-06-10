@@ -49,7 +49,7 @@ void view(){ //this function will print all the array (ship) elements
 			 << "- Customer name: " << ship[i].customer_name << endl
 			 << "- Phone number: " << ship[i].phone << endl
 			 << "- Recieving city: " << ship[i].city << endl
-			 << "- Cost: " << ship[i].cost << endl
+			 << "- Cost: " << ship[i].cost << " SR" << endl
 			 << "- Status: " << (ship[i].status == 'y' ? "Delivered" : "In way") << endl;
 	}
 } //end of view function

@@ -62,7 +62,7 @@ void display(int index){ //this function displays one element of ship array
 		 << "\t- City: " << ship[index].city << endl
 		 << "\t- Cost: " << ship[index].cost << " SR" << endl
 		 << "\t- Status: " << (ship[index].status == 'y' ? "Delivered" : "In way") << endl << endl;
-}
+} //end of display
 
 void editFun(int index){ //this function updates one element of ship array
 	cout << "\nNew name: ";
@@ -77,7 +77,7 @@ void editFun(int index){ //this function updates one element of ship array
 	cin >> ship[index].city;
 	
 	cout << endl;
-}
+} //end of editFun
 
 void deleteFun(int index){ //this function deletes one element of ship array
 	for(int i=index ; i <= myIndex-1 ; i++)
@@ -85,9 +85,9 @@ void deleteFun(int index){ //this function deletes one element of ship array
 	
 	myIndex--;
 	cout << "Deleted\n****************\n";
-}
+} //end of deleteFun
 
-void sort(){ //this function will sort the shipments by number
+void sort(){ //this function will sort the shipments by delivery number
 	bool ordered = false;
 	Shipment temp;
 	
@@ -109,7 +109,7 @@ int search(string phone){ //sequential search
 		if( phone == ship[i].phone )
 			return i;
 	return -1;
-}
+} //end of 1st search
 
 int search(string delivery_num, int first, int end){ //binary search
 	int result=0;
@@ -128,20 +128,20 @@ int search(string delivery_num, int first, int end){ //binary search
 			result = search(delivery_num, mid+1 , end);
 	}
 	return result;
-}
+} //end of 2nd search
 
 int search(const string branches[], int size, string city){
 	for(int i=0 ; i<size ; i++)
 		if(branches[i] == city)
 			return i;
 	return -1;
-}
+} //end of 3rd search
 
 void letterCase(string &word){ //this function will modify the word letter case
 	word[0] = toupper(word[0]);
 	for(int i=1 ; i < word.length() ; i++)
 		word[i] = tolower( word[i] );
-}
+} //end of letterCase function
 
 bool login( Employee *emp, int size ){ //this function is for employee login
 	string id, password;
@@ -167,16 +167,16 @@ bool login( Employee *emp, int size ){ //this function is for employee login
 double calDistance(int x1, int y1, int x2, int y2){
     double y = sqrt( pow(x2-x1 , 2) + pow(y2-y1 , 2) );
     return y ;
-}
+} //end of calDistance function
 
 void costFun(double distance, double &cost){ //this function determines cost according to the distance
     if(distance > 100)
     	cost= 50;
 	else
 		cost= 25;
-}
+} //end of costFun
 
-void guess_game(int correct){
+void guess_game(int correct){ //this function will be excuted while waiting
 	int guess, play;
 	
 	cout << "\n\tWhile waiting.. Do you want to play? Enter 1 to play: ";
@@ -351,7 +351,7 @@ void recieve(const string branches[], int size, bool is_employee){
 	} //end of outer switch
 } //end of recieveFun
 
-void send(const string branches[], int size, bool is_employee){ //This function is to add an element to ship array
+void send(const string branches[], int size, bool is_employee){ //this function is to add an element to ship array
 	myIndex++;
 	
 	string your_city, reciever_phone, reciever_name;
@@ -704,6 +704,9 @@ int main(){
 	ship[3] = { "870078" , "0573311295" , "Riyadh" , "Ayah" , 25 , 'y'};
 	ship[4] = { "660066" , "0577332441" , "Jeddah" , "Ahmed" , 50 , 'n'};
 	
+	//sort the shipments by delivery number
+	sort();
+	
 	//writing the archived shipments (delivered) to a file
 	ofstream outArch;
 	outArch.open("archive.txt" , ios::out);
@@ -737,13 +740,10 @@ int main(){
 	
 	srand(time(0));
 	
-	//sort the shipments
-	sort();
-	
 	//output beginning
-	cout << "  ----- Welcome to Delivery Service -----\n"
-		 << "\n** Enter the number of option when you choose **\n";
-	cout << "\n---------------------------------";
+	cout << "-------------  Welcome to Delivery Service  -------------\n"
+		 << "\n*** Enter the number of option when you choose ***\n";
+	cout << "\n---------------------------------------------------------";
 	begin_label:
 	cout << "\n\t  Are you:\n"
 		 << " \t1. Customer\n"
@@ -849,7 +849,7 @@ int main(){
 				goto begin_label;
 	} //end of outer switch
 	
-	cout << "\n Thank you for using our service\n Bye Bye.";
+	cout << "\n Thank you for using our service\n Bye Bye.\n";
 	
 	/*deleting dynamic variables*/
 	delete [] emp;
